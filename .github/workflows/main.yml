@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: touch /tmp/a
+          script: /usr/bin/python /home/csacco/perf-github/read_url.py package-A
 
 
 
