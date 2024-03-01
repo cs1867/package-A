@@ -1,5 +1,4 @@
-# Publish GitHub workflow artifacts tutorial example
-name: Publish GitHub Actions Artifacts Example
+name: Publish GitHub Actions Artifacts 
 
 on:
   push:
@@ -11,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Step 1 - Create a temporary artifact downloads folder
+      - name: Create a temporary artifact downloads folder
         run: mkdir downloads
         
-      - name: step 2 - Add artifacts to publish to the temp folder
+      - name: Add artifacts to publish to the temp folder
         run: |
           cd downloads
           echo 'alpha'    > alpha.html
           cd ..
     
-      - name: Step 3 - Use the Upload Artifact GitHub Action
+      - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
         with: 
           name: assets-for-download
@@ -34,6 +33,11 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: whoami
+
+
+
+
+
       
       #- name: copy file via ssh password
       #  uses: appleboy/scp-action@v0.1.7
