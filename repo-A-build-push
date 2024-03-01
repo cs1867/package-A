@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: whoami
+          script: touch /tmp/a
  
       #- name: copy file via ssh password
       #  uses: appleboy/scp-action@v0.1.7
