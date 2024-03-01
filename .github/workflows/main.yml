@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: /usr/bin/python /home/perfsonar/perf-github/read_url.py package-A
+          script: /usr/bin/python /home/perfsonar/read_url.py package-A
 
 
 
