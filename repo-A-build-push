@@ -1,4 +1,4 @@
-# Publish GitHub workflow artifacts tutorial example
+# Publish GitHub workflow artifacts
 name: Publish GitHub Actions Artifacts Example
 
 on:
@@ -28,13 +28,21 @@ jobs:
           name: assets-for-download
           path: downloads
           
-
-      - name: copy file via ssh password
-        uses: appleboy/scp-action@v0.1.7
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          source: "downloads/*"
-          target: "/tmp/"
+          script: whoami
+ 
+      #- name: copy file via ssh password
+      #  uses: appleboy/scp-action@v0.1.7
+      #  with:
+      #    host: ${{ secrets.HOST }}
+      #    username: ${{ secrets.USERNAME }}
+       #   password: ${{ secrets.PASSWORD }}
+       #   port: ${{ secrets.PORT }}
+       #   source: "downloads/*"
+       #   target: "/tmp/"
