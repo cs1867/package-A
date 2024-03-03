@@ -1,4 +1,4 @@
-name: Build CentOS Application
+name: Kickoff Package B
 
 on:
   workflow_run:
@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.WORKFLOW }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
               owner: 'cs1867',
