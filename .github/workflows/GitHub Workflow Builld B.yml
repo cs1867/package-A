@@ -16,7 +16,7 @@ jobs:
         with:
           github-token: ${{ secrets.WORKFLOW }}
           script: |
-            await github.rest.actions.createworkflowDispatch({
+            await github.rest.actions.createWorkflowDispatch({
               owner: 'cs1867',
               repo: 'package-B',
               workflow_id: 'main.yml',
