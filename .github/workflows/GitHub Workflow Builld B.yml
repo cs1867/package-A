@@ -1,0 +1,24 @@
+name: Build CentOS Application
+
+on:
+  workflow_run:
+    workflows: "Create Artifact Package-A"
+    branches: main
+    types:
+      - completed
+
+jobs:
+  trigger-repob-workflow:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.WORKFLOW }}
+          script: |
+            await github.rest.actions.createworkflowDispatch({
+              owner: 'cs1867',
+              repo: 'package-B',
+              workflow_id: 'main.yml',
+              ref: 'main'
+            })
