@@ -1,4 +1,4 @@
-name: C
+name: Create Artifact Package-A
 
 on:
   push:
