@@ -24,16 +24,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: repo-A
-          path: downloads
-          
-      - name: Download artifact from repo-A
-        uses: actions/download-artifact@v4
-        with:
-          name: repo-A
-          path: downloads
-          repository: cs1867/package-A  
-      - name: Display structure of downloaded files
-        run: ls -R    
+          path: downloads  
           
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
@@ -43,6 +34,13 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: /usr/bin/python /home/perfsonar/read_url.py ${{ github.event.repository.name }}
-
+      - name: Download artifact from repo-A
+        uses: actions/download-artifact@v4
+        with:
+          name: repo-A
+          path: downloads
+          repository: cs1867/package-A  
+      - name: Display structure of downloaded files
+        run: ls -R    
 
 
