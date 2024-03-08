@@ -26,6 +26,9 @@ jobs:
           name: repo-A
           path: downloads  
           
+      - name: Output artifact ID
+        run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'    
+      
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
         with:
