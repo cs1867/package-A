@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
 env:
-  RUN_ID : 12
+  RUN_ID : "$GITHUB_RUN_ID"
   
 jobs:
 
