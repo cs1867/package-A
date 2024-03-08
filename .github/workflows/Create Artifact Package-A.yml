@@ -3,7 +3,8 @@ name: Create Artifact Package-A
 on:
   push:
     branches: [ main ]
- 
+env:
+  RUN_ID=12
 jobs:
 
 
@@ -19,6 +20,7 @@ jobs:
       - name: Add artifacts to publish to the temp folder
         run: |
           cd downloads
+          echo $RUN_ID
           echo 'alpha'    > alpha.html
           cd ..
     
