@@ -22,6 +22,7 @@ jobs:
     
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
+        id: artifact-upload-step
         with: 
           name: repo-A
           path: downloads  
