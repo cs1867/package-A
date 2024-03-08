@@ -10,7 +10,9 @@ jobs:
   archive-build-artifacts:
     runs-on: ubuntu-latest
     steps:
-
+      - name: Display structure of downloaded files
+        run: echo  "$GITHUB_CONTEXT"
+        
       - name: Create a temporary artifact downloads folder
         run: mkdir downloads
         
