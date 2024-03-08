@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Display structure of downloaded files
-        run: echo  "$GITHUB_CONTEXT"
+        run: echo  "$GITHUB_RUN_ID"
         
       - name: Create a temporary artifact downloads folder
         run: mkdir downloads
