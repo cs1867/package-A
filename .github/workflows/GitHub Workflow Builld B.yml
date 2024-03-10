@@ -7,7 +7,6 @@ on:
     types:
       - completed
 
-
 jobs:
   trigger-repob-workflow:
     if: github.event.workflow_run.conclusion == 'success'
