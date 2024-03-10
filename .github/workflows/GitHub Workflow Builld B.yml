@@ -43,7 +43,7 @@ jobs:
            owner: 'cs1867',
            repo: 'package-B',
            workflow_id: 'main.yml',
-           ref: 'main'
+           ref: 'main',
            inputs: {
              var1: 'Perf',
              var2: 'Sonar'
