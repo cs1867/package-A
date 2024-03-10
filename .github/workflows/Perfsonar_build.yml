@@ -28,7 +28,7 @@ jobs:
         run: |
           cd downloads_RHEL
           echo "RUN_ID is $RUN_ID"
-          echo 'alpha' > alpha.html
+          echo 'RHEL alpha' > alpha.html
           cd ..
 
       # Upload artifacts to repository A RHEL
@@ -52,7 +52,7 @@ jobs:
         run: |
           cd downloads_DEB
           echo "RUN_ID is $RUN_ID"
-          echo 'alpha' > alpha.html
+          echo 'DEB alpha' > alpha.html
           cd ..
 
       # Upload artifacts to repository A DEB
