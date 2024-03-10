@@ -45,7 +45,6 @@ jobs:
            workflow_id: 'main.yml',
            ref: 'main',
            inputs: {
-             var1: 'Perf',
-             var2: 'Sonar'
+             var1: 'Perf'
            }
          })
