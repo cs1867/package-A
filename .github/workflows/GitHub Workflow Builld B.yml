@@ -12,16 +12,39 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.PAT }}
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: 'cs1867',
-              repo: 'package-B',
-              workflow_id: 'main.yml',
-              ref: 'main'
-              inputs: {
-                 run_id: '${{ steps.get_run_id.outputs.run_id }}'
-              }
-            })
+   
+    - name: Get Workflow Run ID
+      id: get_run_id
+      run: echo "::set-output name=run_id::${{ github.run_id }}"
+
+  #  - name: Trigger Workflow in Repository B
+   #   uses: actions/github-script@v5
+    #  with:
+   #    script: |
+   #      const response = await octokit.request('POST /repos/:owner/:repo/actions/workflows/:workflow_id/dispatches', {
+   #        owner: 'owner_of_repository_b',
+   #        repo: 'repository_b',
+   #        workflow_id: 'workflow_id_of_repository_b',
+   #        ref: 'main', // or any other branch
+   #        inputs: {
+   #          var1: 'value1',
+   #          var2: 'value2',
+   #          run_id: '${{ steps.get_run_id.outputs.run_id }}'
+   #        }
+   #      });
+      
+      
+    - name: Call Package B
+      uses: actions/github-script@v6
+      with:
+       github-token: ${{ secrets.PAT }}
+       script: |
+         await github.rest.actions.createWorkflowDispatch({
+           owner: 'cs1867',
+           repo: 'package-B',
+           workflow_id: 'main.yml',
+           ref: 'main'
+           inputs: {
+             run_id: '${{ steps.get_run_id.outputs.run_id }}'
+           }
+         })
