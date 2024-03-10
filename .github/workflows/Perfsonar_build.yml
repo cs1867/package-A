@@ -31,13 +31,37 @@ jobs:
           echo 'alpha' > alpha.html
           cd ..
 
-      # Upload artifacts to repository A
+      # Upload artifacts to repository A RHEL
       - name: Upload artifacts to repository A
-        id: artifact-upload-step
+        id: artifact-upload-id-RHEL
         uses: actions/upload-artifact@v4
         with: 
           name: repo-A-RHEL
           path: downloads_RHEL  
+
+      # Output artifact ID
+      - name: Output artifact ID
+        run: echo "Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}"
+
+      # Create a temporary artifact downloads folder
+      - name: Create temporary artifact downloads folder
+        run: mkdir downloads_DEB
+        
+      # Add artifacts to the temporary folder
+      - name: Add artifacts to the temporary folder
+        run: |
+          cd downloads_DEB
+          echo "RUN_ID is $RUN_ID"
+          echo 'alpha' > alpha.html
+          cd ..
+
+      # Upload artifacts to repository A DEB
+      - name: Upload artifacts to repository A
+        id: artifact-upload-id-DEB
+        uses: actions/upload-artifact@v4
+        with: 
+          name: repo-A-DEB
+          path: downloads_DEB  
 
       # Output artifact ID
       - name: Output artifact ID
