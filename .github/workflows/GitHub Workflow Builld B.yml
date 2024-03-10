@@ -5,7 +5,7 @@ on:
     workflows: "Create Artifact Package-A"
     branches: main
     types:
-      - completed
+      - completed  
 
 jobs:
   trigger-repob-workflow:
