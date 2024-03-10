@@ -47,6 +47,6 @@ jobs:
            ref: 'main',
            inputs: {
              var1: 'Perf',
-             var2: 'Sonar
+             var2: 'Sonar'
            }
          })
