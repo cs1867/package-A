@@ -22,12 +22,12 @@ jobs:
         
       # Create a temporary artifact downloads folder
       - name: Create temporary artifact downloads folder
-        run: mkdir downloads
+        run: mkdir downloads_RHEL
         
       # Add artifacts to the temporary folder
       - name: Add artifacts to the temporary folder
         run: |
-          cd downloads
+          cd downloads_RHEL
           echo "RUN_ID is $RUN_ID"
           echo 'alpha' > alpha.html
           cd ..
@@ -37,8 +37,8 @@ jobs:
         id: artifact-upload-step
         uses: actions/upload-artifact@v4
         with: 
-          name: repo-A
-          path: downloads  
+          name: repo-A-RHEL
+          path: downloads_RHEL  
 
       # Output artifact ID
       - name: Output artifact ID
@@ -48,8 +48,8 @@ jobs:
       - name: Download artifacts from repository A
         uses: actions/download-artifact@v4
         with:
-           name: repo-A
-           path: downloads
+           name: repo-A-RHEL
+           path: downloads_RHEL
            repository: cs1867/package-A
 
       # Display structure of downloaded files
