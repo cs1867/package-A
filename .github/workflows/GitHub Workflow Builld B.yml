@@ -46,6 +46,7 @@ jobs:
            ref: 'main',
            inputs: {
              var1: 'Perf',
-             var2: 'Sonar'
+             var2: 'Sonar',
+             run_id: '${{ steps.get_run_id.outputs.run_id }}'
            }
          })
