@@ -18,7 +18,7 @@ jobs:
     steps:
       # Display the GitHub Run ID for debugging
       - name: Display GitHub Run ID
-        run: echo "GitHub Run ID: ${{ github.run_id }}"
+        run: echo '${{ github.run_id }}'
         
       # Create a temporary artifact downloads folder
       - name: Create temporary artifact downloads folder
