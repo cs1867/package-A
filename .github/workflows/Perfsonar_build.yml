@@ -1,0 +1,73 @@
+name: Github Perfsonar Workflow
+
+on:
+  push:
+    branches: [ main ]
+  workflow_run:
+    workflows: "Create Artifact Package-A"
+    branches: main
+    types:
+      - completed
+
+env:
+  RUN_ID: ${{ github.run_id }}
+
+jobs:
+  archive-build-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      # Display the GitHub Run ID for debugging
+      - name: Display GitHub Run ID
+        run: echo "GitHub Run ID: ${{ github.run_id }}"
+        
+      # Create a temporary artifact downloads folder
+      - name: Create temporary artifact downloads folder
+        run: mkdir downloads
+        
+      # Add artifacts to the temporary folder
+      - name: Add artifacts to the temporary folder
+        run: |
+          cd downloads
+          echo "RUN_ID is $RUN_ID"
+          echo 'alpha' > alpha.html
+          cd ..
+
+      # Upload artifacts to repository A
+      - name: Upload artifacts to repository A
+        id: artifact-upload-step
+        uses: actions/upload-artifact@v4
+        with: 
+          name: repo-A
+          path: downloads  
+
+      # Output artifact ID
+      - name: Output artifact ID
+        run: echo "Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}"
+
+      # Download artifacts from repository A
+      - name: Download artifacts from repository A
+        uses: actions/download-artifact@v4
+        with:
+           name: repo-A
+           path: downloads
+           repository: cs1867/package-A
+
+      # Display structure of downloaded files
+      - name: Display structure of downloaded files
+        run: ls -R 
+
+      # Call Package B in Repository B
+      - name: Call Package B in Repository B
+        uses: actions/github-script@v6
+        with:
+         github-token: ${{ secrets.GIT_ACTIONS }}
+         script: |
+           await github.rest.actions.createWorkflowDispatch({
+             owner: 'cs1867',
+             repo: 'package-B',
+             workflow_id: 'main.yml',
+             ref: 'main',
+             inputs: {
+               var1: '${{ github.run_id }}'
+             }
+           })
