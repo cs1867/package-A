@@ -38,7 +38,7 @@ jobs:
     - name: Call Package B
       uses: actions/github-script@v6
       with:
-       github-token: ${{ secrets.PAT }}
+       github-token: ${{ secrets.GIT_ACTIONS }}
        script: |
          await github.rest.actions.createWorkflowDispatch({
            owner: 'cs1867',
