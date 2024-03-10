@@ -45,6 +45,6 @@ jobs:
            workflow_id: 'main.yml',
            ref: 'main',
            inputs: {
-             var1: ${{ steps.get_run_id.outputs.var1 }}
+             var1: '${{ steps.get_run_id.outputs.var1 }}'
            }
          })
