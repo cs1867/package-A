@@ -44,4 +44,9 @@ jobs:
            repo: 'package-B',
            workflow_id: 'main.yml',
            ref: 'main'
+           inputs: {
+             var1: 'Perf',
+             var2: 'Sonar',
+             run_id: '${{ steps.get_run_id.outputs.run_id }}'
+           }
          })
