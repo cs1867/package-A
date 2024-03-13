@@ -46,6 +46,7 @@ jobs:
             upload_id=$(echo "::set-output name=artifact-upload-id-$type::$(uuidgen)")
             upload_ids="$upload_ids\"$type\":\"$upload_id\","
             echo "Upload artifacts to repository A $type"
+            uses: actions/upload-artifact@v4
             with: 
               name: "repo-A-$type"
               path: "downloads_$type"
