@@ -9,7 +9,6 @@ on:
     types:
       - completed
 
-
 env:
   RUN_ID: ${{ github.run_id }}
 
@@ -27,7 +26,8 @@ jobs:
         id: set-artifact-types
         run: |
           echo "::set-output name=artifact-types::RHEL,DEB"
-     # Loop through artifact types
+
+      # Loop through artifact types
       - name: Process Artifact Types
         id: process-artifact-types
         run: |
@@ -43,9 +43,10 @@ jobs:
           upload_ids=""
           for type in ${{ steps.set-artifact-types.outputs.artifact-types }}; do
             echo "Uploading artifacts for $type"
-            upload_id=$(echo "::set-output name=artifact-upload-id-$type::$(uuidgen)")
+            upload_id=$(uuidgen)
             upload_ids="$upload_ids\"$type\":\"$upload_id\","
             echo "Upload artifacts to repository A $type"
+            # Fixed the syntax for the upload step
             uses: actions/upload-artifact@v4
             with: 
               name: "repo-A-$type"
