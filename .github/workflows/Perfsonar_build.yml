@@ -91,6 +91,6 @@ jobs:
              workflow_id: 'main.yml',
              ref: 'main',
              inputs: {
-               var1: '${{ github.run_id }}'
+               package-A-runid: '${{ github.run_id }}'
              }
            })
