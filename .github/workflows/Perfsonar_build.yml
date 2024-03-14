@@ -1,6 +1,5 @@
 name: Github Perfsonar Workflow
 
-
 on:
   push:
     branches: [ main ]
