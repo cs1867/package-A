@@ -92,6 +92,6 @@ jobs:
              ref: 'main',
              inputs: {
                packageA: '${{ github.run_id }}',
-               packageB: '${{ github.run_id }}
+               packageB: '${{ github.run_id }}'
              }
            })
